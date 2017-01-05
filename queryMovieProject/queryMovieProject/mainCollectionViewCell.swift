@@ -13,7 +13,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
     var blurredPosterImageView = UIImageView()
     var smallPosterImageView = UIImageView()
     var titleLabel = UILabel()
-    var releaseDateLabel = UILabel()
+    var yearLabel = UILabel()
     var ratingLabel = UILabel()
     var blackOverlay = UIView()
     
@@ -42,6 +42,40 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
             make.width.equalTo(blurredPosterImageView.snp.width)
             make.height.equalTo(blurredPosterImageView.snp.height)
         }
+        
+        blackOverlay.addSubview(smallPosterImageView)
+        smallPosterImageView.backgroundColor = UIColor.green
+        smallPosterImageView.layer.borderWidth = 1
+        smallPosterImageView.layer.masksToBounds = true
+        smallPosterImageView.snp.makeConstraints { (make) in
+            make.height.equalTo(blurredPosterImageView.snp.height)
+            make.width.equalTo(blurredPosterImageView.snp.width).dividedBy(5)
+            make.left.equalTo(blurredPosterImageView.snp.left).offset(10)
+        }
+        
+        blackOverlay.addSubview(titleLabel)
+//        titleLabel.backgroundColor = UIColor.red
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(blurredPosterImageView.snp.centerY)
+            make.left.equalTo(smallPosterImageView.snp.right).offset(5)
+            make.height.equalTo(blurredPosterImageView.snp.height).dividedBy(3)
+        }
+        
+        blackOverlay.addSubview(yearLabel)
+        yearLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(3)
+            make.left.equalTo(smallPosterImageView.snp.right).offset(5)
+            make.height.equalTo(blurredPosterImageView.snp.height).dividedBy(7)
+        }
+        
+        blackOverlay.addSubview(ratingLabel)
+        ratingLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(3)
+            make.left.equalTo(yearLabel.snp.right).offset(10)
+            make.height.equalTo(blurredPosterImageView.snp.height).dividedBy(7)
+        }
+        
+        
         
     }
     
