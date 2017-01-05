@@ -1,0 +1,6 @@
+framework module Pods_queryMovieProjectUITests {
+  umbrella header "Pods-queryMovieProjectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
