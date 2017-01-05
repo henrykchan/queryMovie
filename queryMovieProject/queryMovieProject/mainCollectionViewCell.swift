@@ -32,6 +32,17 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
             make.height.equalTo(contentView.snp.height)
         }
         
+        blurredPosterImageView.addSubview(blackOverlay)
+        blackOverlay.backgroundColor = UIColor.clear
+//        blackOverlay.layer.borderWidth = 1
+//        blackOverlay.layer.masksToBounds = true
+        blackOverlay.snp.makeConstraints { (make) in
+            make.centerX.equalTo(blurredPosterImageView.snp.centerX)
+            make.centerY.equalTo(blurredPosterImageView.snp.centerY)
+            make.width.equalTo(blurredPosterImageView.snp.width)
+            make.height.equalTo(blurredPosterImageView.snp.height)
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
