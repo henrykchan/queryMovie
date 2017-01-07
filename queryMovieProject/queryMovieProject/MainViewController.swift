@@ -16,6 +16,9 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup Navigation Controller
+        
+        
         setUpMainCollectionViewCell()
         createLayout()
         
