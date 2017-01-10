@@ -53,7 +53,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
         layout.itemSize = CGSize(width: screenWidth, height: screenHeight/4)
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 0
         mainCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         mainCollectionView.dataSource = self
