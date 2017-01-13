@@ -18,6 +18,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let ratingLabel = UILabel()
     let blurredOverlay = UIView()
     
+    let releasedLabel = UILabel()
+    let genreLabel = UILabel()
+    let directorLabel = UILabel()
+    let actorsLabel = UILabel()
+    let yearLabel = UILabel()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
