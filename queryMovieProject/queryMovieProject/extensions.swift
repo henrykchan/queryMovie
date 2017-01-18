@@ -19,7 +19,7 @@ extension MainViewController {
     private func setupRemainingNavItems() {
         
         let titleImageView = UIImageView(image: #imageLiteral(resourceName: "cactus"))
-        titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        titleImageView.frame = CGRect(x: 0, y: 0, width: 50 , height: 50)
         titleImageView.contentMode = .scaleAspectFit
         
         navigationItem.titleView = titleImageView
@@ -32,17 +32,24 @@ extension MainViewController {
     private func setupLeftNavItems() {
        
         let searchButton = UIButton(type: .system)
-        searchButton.setImage(#imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), for: .normal)
-        searchButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        searchButton.setImage(#imageLiteral(resourceName: "search").withRenderingMode(.alwaysTemplate), for: .normal)
+        searchButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        searchButton.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchButton)
+        searchButton.contentMode = .scaleAspectFit
+        
     }
     
     private func setupRightNavItems() {
         
+
         let addButton = UIButton(type: .system)
-        addButton.setImage(#imageLiteral(resourceName: "add").withRenderingMode(.alwaysOriginal), for: .normal)
-        addButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        addButton.setImage(#imageLiteral(resourceName: "add").withRenderingMode(.alwaysTemplate), for: .normal)
+        addButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        addButton.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
+        addButton.contentMode = .scaleAspectFit
+        
     }
 
 }

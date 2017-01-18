@@ -19,9 +19,9 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         // Setup Navigation Controller
 //        let button1 = UIBarButtonItem(image: UIImage(named: "imagename"), style: .plain, target: self, action: #selector(getter: UIDynamicBehavior.action)) // action:#selector(Class.MethodName) for swift 3
 //        self.navigationItem.rightBarButtonItem  = button1
-        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: nil), animated: true)
-        self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .action , target: self, action: nil), animated: true)
         
+        
+        setupNavigationBarItems()
         setUpMainCollectionViewCell()
         createLayout()
         
