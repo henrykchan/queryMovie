@@ -18,11 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let mainController = MainViewController() as UIViewController
-        let navigationController = UINavigationController(rootViewController: mainController)
-        navigationController.navigationBar.isTranslucent = false
-        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+        
+        
+        // Alternative approach to creating a UINavigation Controller
+        
+//        let mainController = MainViewController() as UIViewController
+//        let navigationController = UINavigationController(rootViewController: mainController)
+//        navigationController.navigationBar.isTranslucent = false
+//        self.window?.rootViewController = navigationController
+//        self.window?.makeKeyAndVisible()
         
         return true
     }

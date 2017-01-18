@@ -26,6 +26,21 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hello", for: indexPath)
+        
+        return cell
+    }
+    
+    
 
 
     
