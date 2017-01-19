@@ -9,9 +9,11 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     var mainCollectionView: UICollectionView!
+    let searchController = UISearchController(searchResultsController: nil)
+    let searchBarContainerView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,8 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
 //        self.navigationItem.rightBarButtonItem  = button1
         
         
+        
+        setupSearchController()
         setupNavigationBarItems()
         setUpMainCollectionViewCell()
         createLayout()
@@ -32,14 +36,30 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     // Create Layout
     func createLayout() {
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.black
+        
+        
+        view.addSubview(searchBarContainerView)
+        searchBarContainerView.backgroundColor = UIColor.white
+        searchBarContainerView.snp.makeConstraints { (make) in
+            make.top.equalTo(view.snp.top)
+//            make.bottom.equalTo(view.snp.bottom)
+//            make.left.equalTo(view.snp.left).offset(20)
+//            make.right.equalTo(view.snp.right).offset(20)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(view.snp.height).dividedBy(20)
+            make.width.equalTo(view.snp.width).multipliedBy(0.95)
+        }
+        searchBarContainerView.layer.cornerRadius = 7
         view.addSubview(mainCollectionView)
         mainCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.snp.top)
+            make.top.equalTo(searchBarContainerView.snp.bottom)
             make.bottom.equalTo(view.snp.bottom)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
         }
+        
+        
     }
     
     // Setup Cells
@@ -63,6 +83,16 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         mainCollectionView.isUserInteractionEnabled = true
     }
     
+    func setupSearchController(){
+        
+        
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -74,6 +104,12 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "basicCell", for: indexPath) as! MainCollectionViewCell
         
         return cell
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+       
+        
     }
     
     

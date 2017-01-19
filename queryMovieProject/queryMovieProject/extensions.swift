@@ -51,5 +51,13 @@ extension MainViewController {
         addButton.contentMode = .scaleAspectFit
         
     }
-
+    
 }
+
+//extension MainViewController: UISearchResultsUpdating {
+//    // MARK: - UISearchResultsUpdating Delegate
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchBar = searchController.searchBar
+//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+//        
+//}

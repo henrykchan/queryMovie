@@ -181,9 +181,9 @@
 		727D2AE51E2F1F1A00B8BA4E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				727D2AE61E2F204D00B8BA4E /* extensions.swift */,
 				727718E31E1C933900C31826 /* MainViewController.swift */,
 				72D6C8201E26E6D500B3AC42 /* DetailViewController.swift */,
+				727D2AE61E2F204D00B8BA4E /* extensions.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
