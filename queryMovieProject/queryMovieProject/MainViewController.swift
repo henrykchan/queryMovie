@@ -12,8 +12,8 @@ import SnapKit
 class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     var mainCollectionView: UICollectionView!
-    let searchController = UISearchController(searchResultsController: nil)
-    let searchBarContainerView = UIView()
+    var searchController = UISearchController(searchResultsController: nil)
+    var searchBarContainerView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,10 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         createLayout()
         
         
+        
+        
+        
+        
     }
     
     
@@ -39,21 +43,30 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         view.backgroundColor = UIColor.black
         
         
-        view.addSubview(searchBarContainerView)
-        searchBarContainerView.backgroundColor = UIColor.white
-        searchBarContainerView.snp.makeConstraints { (make) in
+//        view.addSubview(searchBarContainerView)
+//        searchBarContainerView.backgroundColor = UIColor.white
+//        searchBarContainerView.snp.makeConstraints { (make) in
+//            make.top.equalTo(view.snp.top)
+//            make.centerX.equalTo(view.snp.centerX)
+//            make.height.equalTo(view.snp.height).dividedBy(20)
+//            make.width.equalTo(view.snp.width).multipliedBy(0.95)
+//        }
+        
+        self.view.addSubview(searchController.searchBar)
+        searchController.searchBar.barTintColor = UIColor.black
+        searchController.searchBar.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top)
-//            make.bottom.equalTo(view.snp.bottom)
-//            make.left.equalTo(view.snp.left).offset(20)
-//            make.right.equalTo(view.snp.right).offset(20)
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(view.snp.height).dividedBy(20)
             make.width.equalTo(view.snp.width).multipliedBy(0.95)
         }
-        searchBarContainerView.layer.cornerRadius = 7
-        view.addSubview(mainCollectionView)
+//        searchBarContainerView.addSubview(searchController.searchBar)
+        
+//        searchBarContainerView.layer.cornerRadius = 7
+        
+        self.view.addSubview(mainCollectionView)
         mainCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBarContainerView.snp.bottom)
+            make.top.equalTo(searchController.searchBar.snp.bottom)
             make.bottom.equalTo(view.snp.bottom)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
@@ -81,6 +94,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "basicCell")
         mainCollectionView.isUserInteractionEnabled = true
+        
     }
     
     func setupSearchController(){
@@ -88,8 +102,18 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        definesPresentationContext = true
+        self.definesPresentationContext = false
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Type Here..."
+        searchController.searchBar.sizeToFit()
+//        let text = searchController.searchBar.text
+        searchController.isActive = false
+//        searchController.searchBar.text = text
+        self.searchController.extendedLayoutIncludesOpaqueBars = true
+        searchController.searchBar.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        
+
         
     }
     
