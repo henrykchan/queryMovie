@@ -63,15 +63,8 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             make.right.equalTo(view.snp.right)
         }
         
-//        self.view.addSubview(mainCollectionView)
-//        mainCollectionView.snp.makeConstraints { (make) in
-//            make.top.equalTo(view.snp.top)
-//            make.bottom.equalTo(view.snp.bottom)
-//            make.left.equalTo(view.snp.left)
-//            make.right.equalTo(view.snp.right)
-//        }
-        
-        
+
+
         
        
     }
