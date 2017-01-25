@@ -6,4 +6,17 @@
 //  Copyright © 2017 Henry Chan. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class Movie {
+    
+    var title: String?
+    var year: String?
+    var released: String?
+    var genre: String?
+    var director: String?
+    var actors: String?
+    var plot: String?
+    var poster: String?
+    var imdbRating: String?
+}
