@@ -11,6 +11,7 @@ import SnapKit
 
 class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
+    var movies = [Movie]()
     var mainCollectionView: UICollectionView!
     var searchController = UISearchController(searchResultsController: nil)
     var searchBarContainerView = UIView()

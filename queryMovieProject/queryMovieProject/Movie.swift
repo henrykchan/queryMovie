@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Movie {
+struct Movie {
     
     var title: String?
     var year: String?
@@ -19,4 +19,17 @@ class Movie {
     var plot: String?
     var poster: String?
     var imdbRating: String?
+    
+    init(title: String?, year: String?, released: String?, genre: String?, director: String?, actors: String?, plot: String?, poster: String?, imdbRating: String?) {
+        
+        self.title = title
+        self.year = year
+        self.released = released
+        self.genre = genre
+        self.director = director
+        self.actors = actors
+        self.plot = plot
+        self.poster = poster
+        self.imdbRating = imdbRating
+    }
 }
