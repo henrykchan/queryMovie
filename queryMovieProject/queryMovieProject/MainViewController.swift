@@ -15,6 +15,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var mainCollectionView: UICollectionView!
     var searchController = UISearchController(searchResultsController: nil)
     var searchBarContainerView = UIView()
+    var randomString: String = ""
     
     //maybe delete
     let headerId = "headerId"
@@ -33,8 +34,13 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         setUpMainCollectionViewCell()
         createLayout()
         
-        
-        
+        movieAPIClient.fetchMovies(movieTitle: "lion king") { (movieJson) in
+            
+            let movieDictionary = movieJson["Title"] as! String
+           
+            self.randomString = movieDictionary
+            print ("++++++++++++++++++++\(movieDictionary)")
+        }
         
         
         
