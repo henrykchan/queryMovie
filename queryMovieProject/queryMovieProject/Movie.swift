@@ -32,4 +32,6 @@ struct Movie {
         self.poster = poster
         self.imdbRating = imdbRating
     }
+    
+    init () {}
 }

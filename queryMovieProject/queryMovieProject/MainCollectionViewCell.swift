@@ -10,6 +10,7 @@ import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
     
+    var movie: Movie?
     var blurredPosterImageView = UIImageView()
     var smallPosterImageView = UIImageView()
     var titleLabel = UILabel()

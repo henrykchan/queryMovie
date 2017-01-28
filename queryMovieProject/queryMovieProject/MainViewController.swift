@@ -11,7 +11,7 @@ import SnapKit
 
 class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
-    var movies = [Movie]()
+    var movies: [Movie]?
     var mainCollectionView: UICollectionView!
     var searchController = UISearchController(searchResultsController: nil)
     var searchBarContainerView = UIView()
@@ -36,10 +36,23 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         movieAPIClient.fetchMovies(movieTitle: "lion king") { (movieJson) in
             
-            let movieDictionary = movieJson["Title"] as! String
-           
-            self.randomString = movieDictionary
-            print ("++++++++++++++++++++\(movieDictionary)")
+            self.movies = [Movie]()
+            
+            for dictionary in movieJson {
+                
+                var movie = Movie()
+                
+                movie.title = movieJson["Title"] as? String
+                movie.genre = movieJson["Genre"] as? String
+                movie.imdbRating = movieJson["imdbRating"] as? String
+                movie.plot = movieJson["Plot"] as? String
+                movie.released = movieJson["Released"] as? String
+                movie.actors = movieJson["Actors"] as? String
+                movie.year = movieJson["Year"] as? String
+                movie.poster = movieJson["Poster"] as? String
+                
+                self.movies?.append(movie)
+            }
         }
         
         
