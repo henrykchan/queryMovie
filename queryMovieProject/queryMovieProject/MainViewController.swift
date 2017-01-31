@@ -20,6 +20,8 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     //maybe delete
     let headerId = "headerId"
     let footerId = "footerID"
+    let headline = "headLine"
+    let actors = "actors"
     
     override func viewDidLoad() {
         super.viewDidLoad()
