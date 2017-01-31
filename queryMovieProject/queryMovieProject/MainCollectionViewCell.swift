@@ -11,8 +11,8 @@ import UIKit
 class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
     
     var movie: Movie?
-    var blurredPosterImageView = UIImageView()
-    var smallPosterImageView = UIImageView()
+    var blurredPosterImageView: CustomImageView
+    var smallPosterImageView: CustomImageView
     var titleLabel = UILabel()
     var yearLabel = UILabel()
     var ratingLabel = UILabel()
@@ -82,5 +82,21 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateCell(selectedMovie: Movie) {
+        
+        self.titleLabel.text = selectedMovie.title
+        self.yearLabel.text = selectedMovie.year
+        self.ratingLabel.text = selectedMovie.imdbRating
+        self.blurredPosterImageView = CustomImageView()
+        self.smallPosterImageView = CustomImageView()
+        
+        if (movie?.poster) != nil {
+            blurredPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
+            smallPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
+        }
+        
+        
     }
 }
