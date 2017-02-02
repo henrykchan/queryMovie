@@ -41,20 +41,24 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             
             self.movies = [Movie]()
             
-            for dictionary in movieJson {
+            
+            
+            var movie = Movie()
+            
+            movie.title = movieJson["Title"] as? String
+            movie.genre = movieJson["Genre"] as? String
+            movie.imdbRating = movieJson["imdbRating"] as? String
+            movie.plot = movieJson["Plot"] as? String
+            movie.released = movieJson["Released"] as? String
+            movie.actors = movieJson["Actors"] as? String
+            movie.year = movieJson["Year"] as? String
+            movie.poster = movieJson["Poster"] as? String
+            
+            self.movies?.append(movie)
+            
                 
-                var movie = Movie()
-                
-                movie.title = movieJson["Title"] as? String
-                movie.genre = movieJson["Genre"] as? String
-                movie.imdbRating = movieJson["imdbRating"] as? String
-                movie.plot = movieJson["Plot"] as? String
-                movie.released = movieJson["Released"] as? String
-                movie.actors = movieJson["Actors"] as? String
-                movie.year = movieJson["Year"] as? String
-                movie.poster = movieJson["Poster"] as? String
-                
-                self.movies?.append(movie)
+                DispatchQueue.main.async {
+                    self.mainCollectionView?.reloadData()
             }
         }
         
@@ -134,13 +138,21 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 10
+        print("*******************************\(movies?.count)")
+        return movies?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        
+        
+        let movieIndexPath = movies?[indexPath.row]
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "basicCell", for: indexPath) as! MainCollectionViewCell
+        
+        cell.updateCell(selectedMovie: movieIndexPath!)
+        
+        
         
         return cell
     }

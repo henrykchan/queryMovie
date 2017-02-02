@@ -11,8 +11,8 @@ import UIKit
 class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
     
     var movie: Movie?
-    var blurredPosterImageView: CustomImageView
-    var smallPosterImageView: CustomImageView
+    var blurredPosterImageView = CustomImageView()
+    var smallPosterImageView = CustomImageView()
     var titleLabel = UILabel()
     var yearLabel = UILabel()
     var ratingLabel = UILabel()
@@ -92,7 +92,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         self.blurredPosterImageView = CustomImageView()
         self.smallPosterImageView = CustomImageView()
         
-        if (movie?.poster) != nil {
+        if let posterImageUrl = movie?.poster {
             blurredPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
             smallPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
         }
