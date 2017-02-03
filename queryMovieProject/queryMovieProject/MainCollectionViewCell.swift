@@ -89,8 +89,8 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         self.titleLabel.text = selectedMovie.title
         self.yearLabel.text = selectedMovie.year
         self.ratingLabel.text = selectedMovie.imdbRating
-        self.blurredPosterImageView = CustomImageView()
-        self.smallPosterImageView = CustomImageView()
+//        self.blurredPosterImageView = CustomImageView()
+//        self.smallPosterImageView = CustomImageView()
         
         if let posterImageUrl = movie?.poster {
             blurredPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
