@@ -89,6 +89,8 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         self.titleLabel.text = selectedMovie.title
         self.yearLabel.text = selectedMovie.year
         self.ratingLabel.text = selectedMovie.imdbRating
+        
+        //maybe delete
 //        self.blurredPosterImageView = CustomImageView()
 //        self.smallPosterImageView = CustomImageView()
         
