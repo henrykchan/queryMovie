@@ -17,10 +17,8 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var searchBarContainerView = UIView()
     var randomString: String = ""
     
-    //maybe delete
-    let headerId = "headerId"
-    let footerId = "footerID"
-        
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
