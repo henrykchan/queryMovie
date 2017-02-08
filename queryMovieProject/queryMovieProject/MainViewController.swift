@@ -17,6 +17,8 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var searchBarContainerView = UIView()
     var randomString: String = ""
     
+    var headerString = "HeaderString"
+    
     
     
     override func viewDidLoad() {
