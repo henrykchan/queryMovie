@@ -65,7 +65,7 @@ class CustomImageView: UIImageView {
         
         imageUrlString = urlString
         
-        let url = URL(string: urlString)
+        let url = URL(string: urlString)!
         
         image = nil
         
@@ -74,7 +74,7 @@ class CustomImageView: UIImageView {
             return
         }
         
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if error != nil {
                 print(error)

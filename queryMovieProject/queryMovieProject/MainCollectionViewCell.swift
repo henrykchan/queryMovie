@@ -26,6 +26,8 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         blurredPosterImageView.backgroundColor = UIColor.yellow
         blurredPosterImageView.layer.borderWidth = 1
         blurredPosterImageView.layer.masksToBounds = true
+        blurredPosterImageView.contentMode = .scaleAspectFill
+        blurredPosterImageView.clipsToBounds = true
         blurredPosterImageView.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView.snp.centerX)
             make.centerY.equalTo(contentView.snp.centerY)
@@ -48,6 +50,8 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         smallPosterImageView.backgroundColor = UIColor.green
         smallPosterImageView.layer.borderWidth = 1
         smallPosterImageView.layer.masksToBounds = true
+        smallPosterImageView.contentMode = .scaleAspectFill
+        smallPosterImageView.clipsToBounds = true
         smallPosterImageView.snp.makeConstraints { (make) in
             make.height.equalTo(blurredPosterImageView.snp.height)
             make.width.equalTo(blurredPosterImageView.snp.width).dividedBy(5)
@@ -90,15 +94,15 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         self.yearLabel.text = selectedMovie.year
         self.ratingLabel.text = selectedMovie.imdbRating
         
-        //maybe delete
-//        self.blurredPosterImageView = CustomImageView()
-//        self.smallPosterImageView = CustomImageView()
+
         
-        if let posterImageUrl = movie?.poster {
+        if let posterImageUrl = selectedMovie.poster {
             blurredPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
             smallPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
+            print("-------------------------------------")
         }
         
-        
+//                    blurredPosterImageView.loadImageUsingUrlString(urlString: selectedMovie.poster!)
+//                    smallPosterImageView.loadImageUsingUrlString(urlString: selectedMovie.poster!)
     }
 }
