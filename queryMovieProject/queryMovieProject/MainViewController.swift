@@ -13,10 +13,11 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     var movies: [Movie]?
     var mainCollectionView: UICollectionView!
-    var searchController = UISearchController(searchResultsController: nil)
+//    var searchController = UISearchController(searchResultsController: nil)
     var searchBarContainerView = UIView()
-    var randomString: String = ""
-    
+    var searchText: String = ""
+    var searchActive: Bool = false
+    var theSearchBar = UISearchBar()
     
     
     
@@ -70,9 +71,9 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         view.backgroundColor = UIColor.black
         
-        self.view.addSubview(searchController.searchBar)
-        searchController.searchBar.barTintColor = UIColor.black
-        searchController.searchBar.snp.makeConstraints { (make) in
+        self.view.addSubview(theSearchBar)
+        theSearchBar.barTintColor = UIColor.black
+        theSearchBar.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top)
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(view.snp.height).dividedBy(20)
@@ -82,7 +83,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         self.view.addSubview(mainCollectionView)
         mainCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchController.searchBar.snp.bottom)
+            make.top.equalTo(theSearchBar.snp.bottom)
             make.bottom.equalTo(view.snp.bottom)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
@@ -118,17 +119,20 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func setupSearchController(){
         
-        
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
+        theSearchBar.delegate = self
+//        searchController.searchResultsUpdater = self
+//        searchController.searchBar.delegate = self
         self.definesPresentationContext = false
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Type Here..."
-        searchController.searchBar.sizeToFit()
-        searchController.isActive = true
-        self.searchController.extendedLayoutIncludesOpaqueBars = true
-        searchController.searchBar.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+//        searchController.dimsBackgroundDuringPresentation = false
+//        theSearchBar.hidesNavigationBarDuringPresentation = false
+        theSearchBar.placeholder = "Type Here..."
+        theSearchBar.sizeToFit()
+//        theSearchBar.isActive = true
+//        self.searchController.extendedLayoutIncludesOpaqueBars = true
+//        self.searchController.automaticallyAdjustsScrollViewInsets = true
+//        searchController.searchResultsUpdater = self
+        theSearchBar.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        theSearchBar.isTranslucent = false
         
 
         
@@ -171,6 +175,35 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
        
         
     }
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//        searchText = searchBar.text!
+//        self.view.endEditing(true)
+//    }
+//    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+//        theSearchBar.becomeFirstResponder()
+//        theSearchBar.endEditing(true)
+        
+    }
+//
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+          theSearchBar.endEditing(true)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+          theSearchBar.endEditing(true)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+          theSearchBar.endEditing(true)
+    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        self.theSearchBar.isActive = true
+//    }
+    
     
     
     
