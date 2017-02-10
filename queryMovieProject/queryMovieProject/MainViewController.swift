@@ -16,7 +16,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
 //    var searchController = UISearchController(searchResultsController: nil)
     var searchBarContainerView = UIView()
     var searchText: String = ""
-    var searchActive: Bool = false
+//    var searchActive: Bool = false
     var theSearchBar = UISearchBar()
     
     
