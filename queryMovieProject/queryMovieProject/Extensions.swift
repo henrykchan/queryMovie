@@ -95,6 +95,9 @@ class CustomImageView: UIImageView {
     }
 }
 
+
+//extension color
+
 //extension MainViewController: UISearchResultsUpdating {
 //    // MARK: - UISearchResultsUpdating Delegate
 //    func updateSearchResults(for searchController: UISearchController) {
