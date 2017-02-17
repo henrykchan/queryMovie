@@ -8,6 +8,9 @@
 
 import UIKit
 
+extension UIColor {
+    
+}
 extension MainViewController {
     
     func setupNavigationBarItems() {
