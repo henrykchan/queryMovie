@@ -25,6 +25,9 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults = UserDefaults.standard
+        defaults.set(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+        
         // Setup Navigation Controller
 //        let button1 = UIBarButtonItem(image: UIImage(named: "imagename"), style: .plain, target: self, action: #selector(getter: UIDynamicBehavior.action)) // action:#selector(Class.MethodName) for swift 3
 //        self.navigationItem.rightBarButtonItem  = button1
@@ -205,7 +208,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
 //    }
     
     
-//maybe delete
+
     
     
 
