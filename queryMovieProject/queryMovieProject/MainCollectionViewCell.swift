@@ -36,7 +36,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blurredPosterImageView.addSubview(blackOverlay)
-        blackOverlay.backgroundColor = UIColor.clear
+        blackOverlay.backgroundColor = UIColor(red: 0.05, green: 0.04, blue: 0.04, alpha: 0.3)
 //        blackOverlay.layer.borderWidth = 1
 //        blackOverlay.layer.masksToBounds = true
         blackOverlay.snp.makeConstraints { (make) in
@@ -47,19 +47,21 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(smallPosterImageView)
-        smallPosterImageView.backgroundColor = UIColor.green
+//        smallPosterImageView.backgroundColor = UIColor.green
         smallPosterImageView.layer.borderWidth = 1
         smallPosterImageView.layer.masksToBounds = true
         smallPosterImageView.contentMode = .scaleAspectFill
         smallPosterImageView.clipsToBounds = true
         smallPosterImageView.snp.makeConstraints { (make) in
-            make.height.equalTo(blurredPosterImageView.snp.height)
+            make.height.equalTo(blurredPosterImageView.snp.height).multipliedBy(0.9)
             make.width.equalTo(blurredPosterImageView.snp.width).dividedBy(5)
             make.left.equalTo(blurredPosterImageView.snp.left).offset(10)
+            make.centerY.equalTo(contentView.snp.centerY)
         }
         
         blackOverlay.addSubview(titleLabel)
 //        titleLabel.backgroundColor = UIColor.red
+        titleLabel.textColor = UIColor.white
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(blurredPosterImageView.snp.centerY)
             make.left.equalTo(smallPosterImageView.snp.right).offset(5)
@@ -67,6 +69,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(yearLabel)
+        yearLabel.textColor = UIColor.white
         yearLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
             make.left.equalTo(smallPosterImageView.snp.right).offset(5)
@@ -74,6 +77,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(ratingLabel)
+        ratingLabel.textColor = UIColor.white
         ratingLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
             make.left.equalTo(yearLabel.snp.right).offset(10)
@@ -99,7 +103,6 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         if let posterImageUrl = selectedMovie.poster {
             blurredPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
             smallPosterImageView.loadImageUsingUrlString(urlString: posterImageUrl)
-            print("-------------------------------------")
         }
         
 //                    blurredPosterImageView.loadImageUsingUrlString(urlString: selectedMovie.poster!)

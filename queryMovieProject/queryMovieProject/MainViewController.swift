@@ -25,8 +25,6 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaults = UserDefaults.standard
-        defaults.set(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
         
         // Setup Navigation Controller
 //        let button1 = UIBarButtonItem(image: UIImage(named: "imagename"), style: .plain, target: self, action: #selector(getter: UIDynamicBehavior.action)) // action:#selector(Class.MethodName) for swift 3
@@ -39,7 +37,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         setUpMainCollectionViewCell()
         createLayout()
         
-        movieAPIClient.fetchMovies(movieTitle: "lion king") { (movieJson) in
+        movieAPIClient.fetchMovies(movieTitle: "titanic") { (movieJson) in
             
             self.movies = [Movie]()
             
