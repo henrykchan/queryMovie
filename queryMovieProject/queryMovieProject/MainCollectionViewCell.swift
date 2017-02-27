@@ -60,7 +60,6 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(titleLabel)
-//        titleLabel.backgroundColor = UIColor.red
         titleLabel.textColor = UIColor.white
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(blurredPosterImageView.snp.centerY)
