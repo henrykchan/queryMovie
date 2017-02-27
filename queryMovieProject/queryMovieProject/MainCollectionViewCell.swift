@@ -60,7 +60,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(titleLabel)
-        titleLabel.text = UIFont(name: Aventair, size: 24)
+//        titleLabel.font = UIFont(name: "AppleSDGothicNeo-SemiBold" , size: 12)
         titleLabel.textColor = UIColor.white
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(blurredPosterImageView.snp.centerY)
