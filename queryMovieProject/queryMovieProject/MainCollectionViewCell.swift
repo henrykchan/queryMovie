@@ -17,6 +17,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
     var yearLabel = UILabel()
     var ratingLabel = UILabel()
     var blackOverlay = UIView()
+    var starCactusImage = UIImageView()
     
     
     override init(frame: CGRect) {
@@ -60,7 +61,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(titleLabel)
-//        titleLabel.font = UIFont(name: "AppleSDGothicNeo-SemiBold" , size: 12)
+        titleLabel.font = UIFont(name: "Futura-MediumItalic" , size: 20)
         titleLabel.textColor = UIColor.white
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(blurredPosterImageView.snp.centerY)
@@ -69,6 +70,7 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(yearLabel)
+        yearLabel.font = UIFont(name: "AvenirNext-UltraLight" , size: 18)
         yearLabel.textColor = UIColor.white
         yearLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
@@ -77,9 +79,20 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(ratingLabel)
+        ratingLabel.font = UIFont(name: "AvenirNext-UltraLight" , size: 18)
         ratingLabel.textColor = UIColor.white
         ratingLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
+            make.left.equalTo(yearLabel.snp.right).offset(10)
+            make.height.equalTo(blurredPosterImageView.snp.height).dividedBy(7)
+        }
+        
+        blackOverlay.addSubview(starCactusImage)
+        starCactusImage.image = UIImage(named: "#imageLiteral(resourceName: "cactusStar")")
+        starCactusImage.contentMode = .scaleAspectFit
+        starCactusImage.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(3)
+            make.left.equalTo(ratingLabel.snp.right).offset(0.5)
             make.left.equalTo(yearLabel.snp.right).offset(10)
             make.height.equalTo(blurredPosterImageView.snp.height).dividedBy(7)
         }
