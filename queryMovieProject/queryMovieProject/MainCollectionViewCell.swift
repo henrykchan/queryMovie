@@ -23,6 +23,10 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        contentView.layer.cornerRadius = 10
+//        contentView.layer.borderWidth = 2
+        contentView.layer.masksToBounds = true
+        
         contentView.addSubview(blurredPosterImageView)
         blurredPosterImageView.backgroundColor = UIColor.yellow
         blurredPosterImageView.layer.borderWidth = 1
@@ -88,13 +92,16 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         }
         
         blackOverlay.addSubview(starCactusImage)
-        starCactusImage.image = UIImage(named: "#imageLiteral(resourceName: "cactusStar")")
+        starCactusImage.image = #imageLiteral(resourceName: "cactusStar")
+        starCactusImage.layer.masksToBounds = true
         starCactusImage.contentMode = .scaleAspectFit
+        starCactusImage.clipsToBounds = true
         starCactusImage.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
-            make.left.equalTo(ratingLabel.snp.right).offset(0.5)
-            make.left.equalTo(yearLabel.snp.right).offset(10)
+            make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(blurredPosterImageView.snp.height).dividedBy(7)
+//            make.centerY.equalTo(contentView.snp.centerY).offset(25)
+            make.centerY.equalTo(ratingLabel.snp.centerY).offset(-3)
         }
         
         

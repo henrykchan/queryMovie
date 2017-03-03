@@ -9,15 +9,14 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     var movies: [Movie]?
     var mainCollectionView: UICollectionView!
-//    var searchController = UISearchController(searchResultsController: nil)
-    var searchBarContainerView = UIView()
-    var searchText: String = ""
-//    var searchActive: Bool = false
+//    var searchBarContainerView = UIView()
+    var searchText: String?
     var theSearchBar = UISearchBar()
+
     
     
     
@@ -26,41 +25,37 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         super.viewDidLoad()
         
         
-        // Setup Navigation Controller
-//        let button1 = UIBarButtonItem(image: UIImage(named: "imagename"), style: .plain, target: self, action: #selector(getter: UIDynamicBehavior.action)) // action:#selector(Class.MethodName) for swift 3
-//        self.navigationItem.rightBarButtonItem  = button1
-        
-        
-        
         setupSearchController()
         setupNavigationBarItems()
         setUpMainCollectionViewCell()
         createLayout()
         
-        movieAPIClient.fetchMovies(movieTitle: "titanic") { (movieJson) in
-            
-            self.movies = [Movie]()
-            
-            
-            
-            var movie = Movie()
-            
-            movie.title = movieJson["Title"] as? String
-            movie.genre = movieJson["Genre"] as? String
-            movie.imdbRating = movieJson["imdbRating"] as? String
-            movie.plot = movieJson["Plot"] as? String
-            movie.released = movieJson["Released"] as? String
-            movie.actors = movieJson["Actors"] as? String
-            movie.year = movieJson["Year"] as? String
-            movie.poster = movieJson["Poster"] as? String
-            
-            self.movies?.append(movie)
-            
-                
-                DispatchQueue.main.async {
-                    self.mainCollectionView?.reloadData()
-            }
-        }
+        
+        
+//        movieAPIClient.fetchMovies(movieTitle: searchText) { (movieJson) in
+//            
+//            self.movies = [Movie]()
+//            
+//            
+//            
+//            var movie = Movie()
+//            
+//            movie.title = movieJson["Title"] as? String
+//            movie.genre = movieJson["Genre"] as? String
+//            movie.imdbRating = movieJson["imdbRating"] as? String
+//            movie.plot = movieJson["Plot"] as? String
+//            movie.released = movieJson["Released"] as? String
+//            movie.actors = movieJson["Actors"] as? String
+//            movie.year = movieJson["Year"] as? String
+//            movie.poster = movieJson["Poster"] as? String
+//            
+//            self.movies?.append(movie)
+//            
+//                
+//                DispatchQueue.main.async {
+//                    self.mainCollectionView?.reloadData()
+//            }
+//        }
         
         
         
@@ -148,62 +143,89 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        
-        let movieIndexPath = movies?[indexPath.row]
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "basicCell", for: indexPath) as! MainCollectionViewCell
         
-        cell.updateCell(selectedMovie: movieIndexPath!)
-        
-        
-        
+        if searchText != nil {
+            
+            let movieIndexPath = movies?[indexPath.row]
+            
+            cell.updateCell(selectedMovie: movieIndexPath!)
+            
+        }
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-////        
-////        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
-////        header.backgroundColor = .blue
-////        return header
+
+    
+//    func updateSearchResults(for searchController: UISearchController) {
+//        
+//       
+//        
+//    }
+////
+////    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+////        searchBar.resignFirstResponder()
+////        searchText = searchBar.text!
+////        self.view.endEditing(true)
 ////    }
 ////    
-//////    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//////        return CGSize(width: view.frame.width, height: 12)
-//////    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-       
-        
-    }
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.resignFirstResponder()
-//        searchText = searchBar.text!
-//        self.view.endEditing(true)
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        
+//        
+////        theSearchBar.becomeFirstResponder()
+////        theSearchBar.endEditing(true)
+//        
 //    }
-//    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-//        theSearchBar.becomeFirstResponder()
-//        theSearchBar.endEditing(true)
-        
-    }
+////
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//          theSearchBar.endEditing(true)
+//    }
 //
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-          theSearchBar.endEditing(true)
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-          theSearchBar.endEditing(true)
-    }
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//          theSearchBar.endEditing(true)
+//    }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-          theSearchBar.endEditing(true)
+        
+        print("WE ARE HERE!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        searchBar.text = searchText
+        if let theSearchText = searchText {
+//            searchBar.text = theSearchText
+            
+            print ("*******************************************\(searchBar.text)")
+            
+            movieAPIClient.fetchMovies(movieTitle: theSearchText) { (movieJson) in
+                
+                self.movies = [Movie]()
+                
+                
+                
+                var movie = Movie()
+                
+                movie.title = movieJson["Title"] as? String
+                movie.genre = movieJson["Genre"] as? String
+                movie.imdbRating = movieJson["imdbRating"] as? String
+                movie.plot = movieJson["Plot"] as? String
+                movie.released = movieJson["Released"] as? String
+                movie.actors = movieJson["Actors"] as? String
+                movie.year = movieJson["Year"] as? String
+                movie.poster = movieJson["Poster"] as? String
+                
+                self.movies?.append(movie)
+                
+                print("++++++++++++++++++++++++++++++\(self.movies)")
+                
+                DispatchQueue.main.async {
+                    self.mainCollectionView?.reloadData()
+                }
+            }
+        }
+        else {return}
+        
+        theSearchBar.resignFirstResponder()
+//        theSearchBar.endEditing(true)
     }
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        self.theSearchBar.isActive = true
-//    }
+
     
     
 
