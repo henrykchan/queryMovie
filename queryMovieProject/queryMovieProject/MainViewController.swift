@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
 //    var searchBarContainerView = UIView()
     var searchText: String?
     var theSearchBar = UISearchBar()
+    var searchBarActive: Bool = false
 
     
     
@@ -130,13 +131,13 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         theSearchBar.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         theSearchBar.isTranslucent = false
         
-
-        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("*******************************\(movies?.count)")
+        
+        
         return movies?.count ?? 0
     }
     
@@ -157,40 +158,38 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
 
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//        
-//       
-//        
-//    }
-////
-////    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-////        searchBar.resignFirstResponder()
-////        searchText = searchBar.text!
-////        self.view.endEditing(true)
-////    }
-////    
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        
-//        
-////        theSearchBar.becomeFirstResponder()
-////        theSearchBar.endEditing(true)
-//        
-//    }
-////
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//          theSearchBar.endEditing(true)
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//          theSearchBar.endEditing(true)
-//    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.characters.count > 0 {
+            self.searchBarActive = true
+            self.mainCollectionView?.reloadData()
+        }
+        else {
+            self.searchBarActive = false
+            self.mainCollectionView?.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBarActive = false
+        self.theSearchBar.resignFirstResponder()
+        self.theSearchBar.text = ""
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        self.searchBarActive = true
+        
+        self.theSearchBar.setShowsCancelButton(true, animated: true)
+    
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        print("WE ARE HERE!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        searchBar.text = searchText
-        if let theSearchText = searchText {
-//            searchBar.text = theSearchText
+        self.searchBarActive = true
+        let searchWords = searchBar.text
+        searchText = searchWords
+        print("OOooooooooooooooooooooooooooooo\(searchBar.text)")
+        
+        if let theSearchText = searchWords {
             
             print ("*******************************************\(searchBar.text)")
             
@@ -222,8 +221,9 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
         else {return}
         
-        theSearchBar.resignFirstResponder()
-//        theSearchBar.endEditing(true)
+//        self.theSearchBar.resignFirstResponder()
+//        self.view.endEditing(true)
+        self.theSearchBar.endEditing(true)
     }
 
     
