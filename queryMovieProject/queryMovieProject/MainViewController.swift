@@ -31,35 +31,6 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         setUpMainCollectionViewCell()
         createLayout()
         
-        
-        
-//        movieAPIClient.fetchMovies(movieTitle: searchText) { (movieJson) in
-//            
-//            self.movies = [Movie]()
-//            
-//            
-//            
-//            var movie = Movie()
-//            
-//            movie.title = movieJson["Title"] as? String
-//            movie.genre = movieJson["Genre"] as? String
-//            movie.imdbRating = movieJson["imdbRating"] as? String
-//            movie.plot = movieJson["Plot"] as? String
-//            movie.released = movieJson["Released"] as? String
-//            movie.actors = movieJson["Actors"] as? String
-//            movie.year = movieJson["Year"] as? String
-//            movie.poster = movieJson["Poster"] as? String
-//            
-//            self.movies?.append(movie)
-//            
-//                
-//                DispatchQueue.main.async {
-//                    self.mainCollectionView?.reloadData()
-//            }
-//        }
-        
-        
-        
     }
     
     
