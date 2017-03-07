@@ -97,11 +97,9 @@ class MainCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         starCactusImage.contentMode = .scaleAspectFit
         starCactusImage.clipsToBounds = true
         starCactusImage.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(3)
-            make.centerX.equalTo(contentView.snp.centerX)
+            make.centerX.equalTo(contentView.snp.centerX).offset(-3)
             make.height.equalTo(blurredPosterImageView.snp.height).dividedBy(7)
-//            make.centerY.equalTo(contentView.snp.centerY).offset(25)
-            make.centerY.equalTo(ratingLabel.snp.centerY).offset(-3)
+            make.centerY.equalTo(ratingLabel.snp.centerY).offset(-2)
         }
         
         

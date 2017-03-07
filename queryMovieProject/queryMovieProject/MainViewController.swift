@@ -13,11 +13,11 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     var movies: [Movie]?
     var mainCollectionView: UICollectionView!
-//    var searchBarContainerView = UIView()
+    //    var searchBarContainerView = UIView()
     var searchText: String?
     var theSearchBar = UISearchBar()
     var searchBarActive: Bool = false
-
+    
     
     
     
@@ -47,7 +47,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             make.height.equalTo(view.snp.height).dividedBy(20)
             make.width.equalTo(view.snp.width).multipliedBy(0.95)
         }
-
+        
         
         self.view.addSubview(mainCollectionView)
         mainCollectionView.snp.makeConstraints { (make) in
@@ -57,10 +57,10 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             make.right.equalTo(view.snp.right)
         }
         
-
-
         
-       
+        
+        
+        
     }
     
     // Setup Cells
@@ -88,17 +88,17 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     func setupSearchController(){
         
         theSearchBar.delegate = self
-//        searchController.searchResultsUpdater = self
-//        searchController.searchBar.delegate = self
+        //        searchController.searchResultsUpdater = self
+        //        searchController.searchBar.delegate = self
         self.definesPresentationContext = false
-//        searchController.dimsBackgroundDuringPresentation = false
-//        theSearchBar.hidesNavigationBarDuringPresentation = false
+        //        searchController.dimsBackgroundDuringPresentation = false
+        //        theSearchBar.hidesNavigationBarDuringPresentation = false
         theSearchBar.placeholder = "Type Here..."
         theSearchBar.sizeToFit()
-//        theSearchBar.isActive = true
-//        self.searchController.extendedLayoutIncludesOpaqueBars = true
-//        self.searchController.automaticallyAdjustsScrollViewInsets = true
-//        searchController.searchResultsUpdater = self
+        //        theSearchBar.isActive = true
+        //        self.searchController.extendedLayoutIncludesOpaqueBars = true
+        //        self.searchController.automaticallyAdjustsScrollViewInsets = true
+        //        searchController.searchResultsUpdater = self
         theSearchBar.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         theSearchBar.isTranslucent = false
         
@@ -127,7 +127,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return cell
     }
     
-
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -148,11 +148,11 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        self.searchBarActive = true
+        //        self.searchBarActive = true
         
         self.theSearchBar.setShowsCancelButton(true, animated: true)
-    
-
+        
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         self.searchBarActive = true
@@ -192,18 +192,9 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
         else {return}
         
-//        self.theSearchBar.resignFirstResponder()
-//        self.view.endEditing(true)
+        //        self.theSearchBar.resignFirstResponder()
+        //        self.view.endEditing(true)
         self.theSearchBar.endEditing(true)
     }
-
-    
-    
-
-    
-    
-
-    
-
 }
 
