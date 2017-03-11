@@ -14,8 +14,8 @@ extension UIColor {
 extension MainViewController {
     
     func setupNavigationBarItems() {
-        setupLeftNavItems()
-        setupRightNavItems()
+//        setupLeftNavItems()
+//        setupRightNavItems()
         setupRemainingNavItems()
     }
     
@@ -57,7 +57,7 @@ extension MainViewController {
     
 }
 
-
+// Caching
 let imageCache = NSCache<AnyObject, AnyObject>()
 
 class CustomImageView: UIImageView {
