@@ -13,7 +13,6 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     var movies: [Movie]?
     var mainCollectionView: UICollectionView!
-    //    var searchBarContainerView = UIView()
     var searchText: String?
     var theSearchBar = UISearchBar()
     var searchBarActive: Bool = false
