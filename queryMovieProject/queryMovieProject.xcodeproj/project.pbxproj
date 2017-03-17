@@ -111,13 +111,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		722155D21E78DF750032E611 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
 		7235ABFE1E3C51F0009EC2C8 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +144,6 @@
 		727718E01E1C933900C31826 /* queryMovieProject */ = {
 			isa = PBXGroup;
 			children = (
-				722155D21E78DF750032E611 /* Helpers */,
 				727D2AE51E2F1F1A00B8BA4E /* Controller */,
 				727D2AE11E2F1EBD00B8BA4E /* Model */,
 				727D2AE01E2F1EA300B8BA4E /* View */,
