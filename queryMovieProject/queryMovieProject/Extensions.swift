@@ -98,5 +98,9 @@ class CustomImageView: UIImageView {
     }
 }
 
+extension UIColor {
+    
+}
+
 
 
